@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.idea/
+.vscode/
+.wrangler/
+*.local
+*.log
+*.tsbuildinfo
+dist/
+node_modules/

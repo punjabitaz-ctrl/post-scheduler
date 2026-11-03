@@ -1,0 +1,39 @@
+{
+  "name": "post-scheduler",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:frontend": "vite --host 127.0.0.1 --port 5173",
+    "build:frontend": "vue-tsc -p tsconfig.frontend.json && vite build",
+    "build": "npm run build:frontend",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "deploy": "npm run db:migrate:remote && wrangler deploy --minify"
+  },
+  "dependencies": {
+    "@lucide/vue": "^1.17.0",
+    "@tsndr/cloudflare-worker-jwt": "^3.2.1",
+    "@vueuse/core": "^14.3.0",
+    "dayjs": "^1.11.20",
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.12.14",
+    "vue": "^3.5.34",
+    "zod": "^4.4.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260627.1",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/node": "^24.12.3",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "drizzle-kit": "^0.31.10",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4.3.0",
+    "terser": "^5.47.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vue-tsc": "^3.2.8",
+    "wrangler": "^4.105.0"
+  }
+}

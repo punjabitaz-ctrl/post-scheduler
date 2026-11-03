@@ -1,0 +1,30 @@
+name = "post-scheduler"
+main = "backend/index.ts"
+compatibility_date = "2026-06-16"
+compatibility_flags = ["nodejs_compat"]
+
+workers_dev = true
+preview_urls = false
+
+[assets]
+binding = "ASSETS"
+directory = "./dist"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_id = "0cabaffd-9495-40bf-a7ad-132c3c26a299"
+database_name = "post-scheduler"
+
+[[durable_objects.bindings]]
+name = "PUBLISH_SCHEDULER"
+class_name = "PublishSchedulerDO"
+
+[vars]
+DISABLE_REGISTRATION = "true"
+JWT_SECRET = "some-secret-key"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["PublishSchedulerDO"]
